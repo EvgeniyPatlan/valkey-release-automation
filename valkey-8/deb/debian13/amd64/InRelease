@@ -1,0 +1,32 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Archive: stable
+Component: main
+Architecture: amd64
+Date: Fri, 06 Mar 2026 13:25:50 +0000
+MD5Sum:
+ ab7d25582cf4305a506bcf553384917a             8167 Packages
+ 967e77156b021958606e1778112a58fc             2726 Packages.gz
+SHA1:
+ 35275c0effe1dbd97db9ed722333b297fd5f6439             8167 Packages
+ 7bdd3ee7febe1d8f4718dda7ddceff18807014c2             2726 Packages.gz
+SHA256:
+ 71cef67a7024a4b42fb53b2961e28e5886fd095bc0614686ab3e8226a01db048             8167 Packages
+ 61a75b6df34c2f5a88fdba81f96957ab4fe5bad0a35aab708b949b1970eee7a1             2726 Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEL8FZaDQqo+nepDCx58DPJFWQ4CUFAmmq1d4ACgkQ58DPJFWQ
+4CVjdw/9FF70mkwS/3+VP1vX3NFDIca3Ks/dmnyK31riGJ5Rtrw5/qWzRUOSzo2B
+iojyx/v8BHsYcrwW76gthjFC/UF+EinR3EoS4ylPcJ2FqSf3+gZU4OjHiDjF+LxM
+DbdK5zlpsZ7GC2+hqKTDMSVzVkggnRWhGDV+v/RzUceRT0TrFAjvbNX1U6DtIfQa
+uaEGkb8HNbDgzI9a+/g4sV6FUhi0u5cWSpnmuJQUScsTYB4DrTUXvWXaxP3kQyNj
+9N4jN0WopFW3TUPEaaStompgOsDycLh0hVxp73EMzu3xFk8pjqgo2qrWBGvC2Kr8
+aFZQuj69DO/MBE3pe+gzD8G4pMPkfLjwUU3pl66ePY4zhfa8YSHj+1GQbpqT+6A3
+V6zBGkfdmjmXdGyxBnwAWukQ6b1ytMG5gMmWdzB1iaqMsbiDvyYlTax34RNLm6SM
+mfo2oBARcDcrDPq2vJk/2v33bRKQ2X98qV5tCdJ+hd/vmCAOv7MLOyESMTimSuIh
+0d80hvfda9t6vdCWslVeQnVEvd1mLOtH6PUSP91PI3ailNyZjpjiBK/pq2XnY/5R
+XDPFj/q3uhnZlvfRfdD7QEsfG2mWnPbCw84kJSg3YyE1pW9uZPjxpeZiqsV/NjhC
+a4Rvh6KUM9QDeagz9p++ssrbMgXi+yFQUbpoyWtnTdznSwcSOlE=
+=Kp39
+-----END PGP SIGNATURE-----
