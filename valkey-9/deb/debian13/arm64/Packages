@@ -1,0 +1,223 @@
+Package: valkey-compat-redis
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 42
+Depends: valkey-server (>= 9.0.3-1.trixie), valkey-tools (>= 9.0.3-1.trixie)
+Conflicts: redis-server (<< 7.4~), redis-tools (<< 7.4~)
+Breaks: valkey-compat-redis (<< 9.0~)
+Replaces: redis-server (<< 7.4~), redis-tools (<< 7.4~), valkey-compat-redis (<< 9.0~)
+Provides: redis-server, redis-tools
+Filename: ./valkey-compat-redis_9.0.3-1.trixie_all.deb
+Size: 15174
+MD5sum: 006d2f0ce646da1e50a70c60ec9e5c8b
+SHA1: 5e38ffc1b4d48df1c6a1bac336f12516e3fbe713
+SHA256: 262c2d549264595a9e3cf4d171de551587cc7d2c9a47c83360241d82b3e59922
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Redis compatibility symlinks for Valkey
+ This package provides compatibility symlinks and wrappers to enable
+ easy conversion from Redis to Valkey. It provides redis-* command names
+ that redirect to the equivalent valkey-* commands.
+ .
+ This is a transitional package to help migrate from Redis to Valkey.
+
+Package: valkey-compat-redis-dev
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 80
+Depends: valkey-dev (>= 9.0.3-1.trixie)
+Conflicts: redis-dev (<< 7.4~)
+Breaks: valkey-compat-redis-dev (<< 9.0~)
+Replaces: redis-dev (<< 7.4~), valkey-compat-redis-dev (<< 9.0~)
+Provides: redis-dev
+Filename: ./valkey-compat-redis-dev_9.0.3-1.trixie_all.deb
+Size: 21006
+MD5sum: 950cced3313cb5c5f5cd925b384932c1
+SHA1: 24c75da97e034597537943a196844fd91e342b42
+SHA256: a974520b5b41d898418a8344147b0d4668683b9326784239c22863d9af5ed57f
+Section: libdevel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://valkey.io
+Description: Redis API compatibility headers for Valkey modules
+ This package provides the legacy redismodule.h header for building
+ Valkey modules with the Redis API.
+ .
+ This is a transitional package to help migrate Redis modules to Valkey.
+
+Package: valkey-dev
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 170
+Breaks: valkey-dev (<< 9.0~)
+Replaces: valkey-dev (<< 9.0~)
+Filename: ./valkey-dev_9.0.3-1.trixie_arm64.deb
+Size: 33446
+MD5sum: 541420600d4a78d57cddb601f9d2e68c
+SHA1: 9f56fdb91f9c9caf2558747d9215ec0c8125caf9
+SHA256: a9bf336affec6768af54ddb9ee1d4fb0628725b39c8a2eadf8e8cb1d140f79e9
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://valkey.io
+Description: Development files for Valkey modules
+ Valkey is an advanced key-value store.
+ .
+ This package contains the header files needed to develop Valkey modules.
+ Includes valkeymodule.h and RPM macros for module packaging.
+
+Package: valkey-doc
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 8182
+Breaks: valkey-doc (<< 9.0~)
+Replaces: valkey-doc (<< 9.0~)
+Filename: ./valkey-doc_9.0.3-1.trixie_all.deb
+Size: 2103662
+MD5sum: 94035fb1ce860e713141d7c2e78bb2a8
+SHA1: 83b4db0e544e1a23db2f9b6453eedbd3d3bde049
+SHA256: dc08d9030281182d05e48de243daf3cfc7ece4bde6c3f0b61359e4d7b1320826
+Section: doc
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://valkey.io
+Description: Documentation for Valkey
+ Valkey is an advanced key-value store.
+ .
+ This package contains the documentation and additional man pages.
+
+Package: valkey-sentinel
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 93
+Depends: valkey-tools (= 9.0.3-1.trixie), lsb-base (>= 3.2-14)
+Recommends: logrotate
+Breaks: valkey-sentinel (<< 9.0~)
+Replaces: valkey-sentinel (<< 9.0~)
+Filename: ./valkey-sentinel_9.0.3-1.trixie_arm64.deb
+Size: 45782
+MD5sum: be8ab46500c896ea4742d1f8c9f08ead
+SHA1: 82da6d86703600c86de8ece8feb731b8de7363ce
+SHA256: ccbfc1c97433503f182dac667d45066413d6f92083228087b6b7dba56f6be108
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface (monitoring)
+ Valkey is an advanced key-value store.
+ .
+ This package contains the Valkey Sentinel monitoring software.
+
+Package: valkey-server
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 3439
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: valkey-tools (= 9.0.3-1.trixie), lsb-base (>= 3.2-14), libatomic1 (>= 4.8), libc6 (>= 2.38), libjemalloc2 (>= 4.0.0), liblzf1 (>= 1.5), libssl3t64 (>= 3.0.0), libsystemd0
+Recommends: logrotate
+Suggests: valkey-doc, valkey-compat-redis
+Breaks: valkey-server (<< 9.0~)
+Replaces: valkey-server (<< 9.0~)
+Provides: valkey
+Filename: ./valkey-server_9.0.3-1.trixie_arm64.deb
+Size: 1066322
+MD5sum: 10b39fd875f59fe0ba24cf00bd528131
+SHA1: 42b2095266227627a1493419590f47ea126aa1b0
+SHA256: 31750bdcc3eba5c8b32f490f5cecdb22f8f6a5f85691c49d10ccebb02365bf52
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface
+ Valkey is an advanced key-value store. It is often referred to as a data
+ structure server since keys can contain strings, hashes, lists, sets and
+ sorted sets.
+ .
+ You can run atomic operations on these types, like appending to a string;
+ incrementing the value in a hash; pushing to a list; computing set
+ intersection, union and difference; or getting the member with highest
+ ranking in a sorted set.
+ .
+ In order to achieve its outstanding performance, Valkey works with an
+ in-memory dataset. Depending on your use case, you can persist it either
+ by dumping the dataset to disk every once in a while, or by appending
+ each command to a log.
+ .
+ Valkey also supports trivial-to-setup primary-replica replication, with very
+ fast non-blocking first synchronization, auto-reconnection on net split
+ and so forth.
+ .
+ Other features include Transactions, Pub/Sub, Lua scripting, Keys with a
+ limited time-to-live, and configuration settings to make Valkey behave like
+ a cache.
+
+Package: valkey-server-dbgsym
+Source: valkey
+Version: 9.0.3-1.trixie
+Auto-Built-Package: debug-symbols
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 7234
+Depends: valkey-server (= 9.0.3-1.trixie)
+Filename: ./valkey-server-dbgsym_9.0.3-1.trixie_arm64.deb
+Size: 3827562
+MD5sum: d2ce4458e8ec0959118c23e25fe82395
+SHA1: 2380198e883de274f2b4d80b83814d54b7d6c2aa
+SHA256: fc6457078f3aa90d3297c066f6eca503ea1e523bc127082bfc176ec63d8a5d0d
+Section: debug
+Priority: optional
+Description: debug symbols for valkey-server
+Build-Ids: 4ab2aa15865965dad02c860dca040c969d353f65
+
+Package: valkey-tools
+Source: valkey
+Version: 9.0.3-1.trixie
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 1104
+Depends: adduser, libatomic1 (>= 4.8), libc6 (>= 2.38), libjemalloc2 (>= 4.0.0), liblzf1 (>= 1.5), libssl3t64 (>= 3.0.0), libsystemd0
+Suggests: ruby-redis
+Breaks: valkey-tools (<< 9.0~)
+Replaces: valkey-tools (<< 9.0~)
+Filename: ./valkey-tools_9.0.3-1.trixie_arm64.deb
+Size: 288718
+MD5sum: 60e1bc0f4c23c6c2664b91ee498727db
+SHA1: 76f6ed31a496dc24f4bf12cf618cae49517485b7
+SHA256: a0ec92a24ff921c3a3454042470b1238c5660dbc195b11ceada16b9b4aa79554
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface (client)
+ Valkey is an advanced key-value store.
+ .
+ This package contains the command line client and other tools.
+
+Package: valkey-tools-dbgsym
+Source: valkey
+Version: 9.0.3-1.trixie
+Auto-Built-Package: debug-symbols
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 1857
+Depends: valkey-tools (= 9.0.3-1.trixie)
+Filename: ./valkey-tools-dbgsym_9.0.3-1.trixie_arm64.deb
+Size: 856558
+MD5sum: 46694355c22aa97af8b308d459814cb6
+SHA1: 61fd83248f8e6e89d1e68a2aeb651d29caa493f9
+SHA256: 4579fc8d6cef16e73dbe17a2aaa7536f858c4a3a9721dfadb3eca3921ce0130f
+Section: debug
+Priority: optional
+Description: debug symbols for valkey-tools
+Build-Ids: 0009343f15acc2cde1ddfaa7d0cf8fa65434a8c4 ecee7757e4fab54bda84e1d1531a8edfc3fe6c68
+

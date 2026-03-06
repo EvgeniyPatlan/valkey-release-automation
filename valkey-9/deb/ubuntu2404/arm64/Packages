@@ -1,0 +1,187 @@
+Package: valkey-compat-redis
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 42
+Depends: valkey-server (>= 9.0.3-1.noble), valkey-tools (>= 9.0.3-1.noble)
+Conflicts: redis-server (<< 7.4~), redis-tools (<< 7.4~)
+Breaks: valkey-compat-redis (<< 9.0~)
+Replaces: redis-server (<< 7.4~), redis-tools (<< 7.4~), valkey-compat-redis (<< 9.0~)
+Provides: redis-server, redis-tools
+Filename: ./valkey-compat-redis_9.0.3-1.noble_all.deb
+Size: 15162
+MD5sum: f8ced7e788f6794f6d4437bf7396cb6c
+SHA1: a11a72b4fc80abdc9e0db6bf46e86ca9e1f01756
+SHA256: 2e4edd6d20bb35bf4344dfccac927cff2ed7573c899fcf911b324f97a57131a4
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Redis compatibility symlinks for Valkey
+ This package provides compatibility symlinks and wrappers to enable
+ easy conversion from Redis to Valkey. It provides redis-* command names
+ that redirect to the equivalent valkey-* commands.
+ .
+ This is a transitional package to help migrate from Redis to Valkey.
+
+Package: valkey-compat-redis-dev
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 80
+Depends: valkey-dev (>= 9.0.3-1.noble)
+Conflicts: redis-dev (<< 7.4~)
+Breaks: valkey-compat-redis-dev (<< 9.0~)
+Replaces: redis-dev (<< 7.4~), valkey-compat-redis-dev (<< 9.0~)
+Provides: redis-dev
+Filename: ./valkey-compat-redis-dev_9.0.3-1.noble_all.deb
+Size: 20998
+MD5sum: 97aaf5c27b6f5d1292fdc5fb928ad050
+SHA1: 25fb29f9e3718970944983a711d66e8f0dceefda
+SHA256: 4bf432abd9973ced12042df1151728dc5b5fa592686b7297d417f97f4461a0fa
+Section: libdevel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://valkey.io
+Description: Redis API compatibility headers for Valkey modules
+ This package provides the legacy redismodule.h header for building
+ Valkey modules with the Redis API.
+ .
+ This is a transitional package to help migrate Redis modules to Valkey.
+
+Package: valkey-dev
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 170
+Breaks: valkey-dev (<< 9.0~)
+Replaces: valkey-dev (<< 9.0~)
+Filename: ./valkey-dev_9.0.3-1.noble_arm64.deb
+Size: 33442
+MD5sum: 4ad72336dc911a608cb72ed42faa5092
+SHA1: 33d83fce895ac40ecbce0b344730c9a2118f95de
+SHA256: e45f8d0337de3f0812686f115753e5bd5a0e9e9d5d83490c49af5eeb2f1372bd
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://valkey.io
+Description: Development files for Valkey modules
+ Valkey is an advanced key-value store.
+ .
+ This package contains the header files needed to develop Valkey modules.
+ Includes valkeymodule.h and RPM macros for module packaging.
+
+Package: valkey-doc
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 8230
+Breaks: valkey-doc (<< 9.0~)
+Replaces: valkey-doc (<< 9.0~)
+Filename: ./valkey-doc_9.0.3-1.noble_all.deb
+Size: 2156862
+MD5sum: 33254a1fceaaebf66ed19f3a82658c9a
+SHA1: 61407099e0ea6c7879a0fbc75b2b6cbe1411dee1
+SHA256: b40a19968767d5845f4b046a4d1c566f2f562eb7e78f580f381aebcffc7528b7
+Section: doc
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://valkey.io
+Description: Documentation for Valkey
+ Valkey is an advanced key-value store.
+ .
+ This package contains the documentation and additional man pages.
+
+Package: valkey-sentinel
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 93
+Depends: valkey-tools (= 9.0.3-1.noble), lsb-base (>= 3.2-14)
+Recommends: logrotate
+Breaks: valkey-sentinel (<< 9.0~)
+Replaces: valkey-sentinel (<< 9.0~)
+Filename: ./valkey-sentinel_9.0.3-1.noble_arm64.deb
+Size: 45826
+MD5sum: 129ef88c1fdf7fc6442a5ad1f988ea88
+SHA1: 5139bdedecf85002fe0fcd3f8acdca3fd88a322a
+SHA256: b6dd8e2ac8884fb31ea0be6b24341955564547a2b0e457ca09d7df1efc20389b
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface (monitoring)
+ Valkey is an advanced key-value store.
+ .
+ This package contains the Valkey Sentinel monitoring software.
+
+Package: valkey-server
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 3440
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: valkey-tools (= 9.0.3-1.noble), lsb-base (>= 3.2-14), libatomic1 (>= 4.8), libc6 (>= 2.38), libjemalloc2 (>= 4.0.0), liblzf1 (>= 1.5), libssl3t64 (>= 3.0.0), libsystemd0
+Recommends: logrotate
+Suggests: valkey-doc, valkey-compat-redis
+Breaks: valkey-server (<< 9.0~)
+Replaces: valkey-server (<< 9.0~)
+Provides: valkey
+Filename: ./valkey-server_9.0.3-1.noble_arm64.deb
+Size: 1057998
+MD5sum: 6c8d7e674bc9e5728aae87715d58e701
+SHA1: 0abff5469d77c058f9a807c4b9bc828fc94919cc
+SHA256: f5089624561b7e1b7998b212661428184dc95ce3272b9a4ee6bc66bcf4cc4d36
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface
+ Valkey is an advanced key-value store. It is often referred to as a data
+ structure server since keys can contain strings, hashes, lists, sets and
+ sorted sets.
+ .
+ You can run atomic operations on these types, like appending to a string;
+ incrementing the value in a hash; pushing to a list; computing set
+ intersection, union and difference; or getting the member with highest
+ ranking in a sorted set.
+ .
+ In order to achieve its outstanding performance, Valkey works with an
+ in-memory dataset. Depending on your use case, you can persist it either
+ by dumping the dataset to disk every once in a while, or by appending
+ each command to a log.
+ .
+ Valkey also supports trivial-to-setup primary-replica replication, with very
+ fast non-blocking first synchronization, auto-reconnection on net split
+ and so forth.
+ .
+ Other features include Transactions, Pub/Sub, Lua scripting, Keys with a
+ limited time-to-live, and configuration settings to make Valkey behave like
+ a cache.
+
+Package: valkey-tools
+Source: valkey
+Version: 9.0.3-1.noble
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 1103
+Depends: adduser, libatomic1 (>= 4.8), libc6 (>= 2.38), libjemalloc2 (>= 4.0.0), liblzf1 (>= 1.5), libssl3t64 (>= 3.0.0), libsystemd0
+Suggests: ruby-redis
+Breaks: valkey-tools (<< 9.0~)
+Replaces: valkey-tools (<< 9.0~)
+Filename: ./valkey-tools_9.0.3-1.noble_arm64.deb
+Size: 285194
+MD5sum: 48d7958119d9b1bfad962f7e1aeeec4e
+SHA1: e2224e3fcbc1beb974addc0aee404035e111431b
+SHA256: f1cea82f639a1a01814dcf24ea54c079c061562617736fa4e533ab2632b5c4bc
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface (client)
+ Valkey is an advanced key-value store.
+ .
+ This package contains the command line client and other tools.
+
