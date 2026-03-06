@@ -1,0 +1,191 @@
+Package: valkey-compat-redis
+Source: valkey
+Version: 7.2.12-1.bullseye
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 39
+Depends: valkey-server (>= 7.2.12-1.bullseye), valkey-tools (>= 7.2.12-1.bullseye)
+Conflicts: redis-server (<< 7.4~), redis-tools (<< 7.4~)
+Replaces: redis-server (<< 7.4~), redis-tools (<< 7.4~)
+Provides: redis-server, redis-tools
+Filename: ./valkey-compat-redis_7.2.12-1.bullseye_all.deb
+Size: 11974
+MD5sum: 104876df5da75a7879edc53ef828e7cd
+SHA1: 610aa769cbafe16749618bba57d965517c3b5185
+SHA256: 77de6aadbc92ba96681393395664f7d8397ea4f3c1021332627eae84bcb10b47
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Redis compatibility symlinks for Valkey
+ This package provides compatibility symlinks and wrappers to enable
+ easy conversion from Redis to Valkey. It provides redis-* command names
+ that redirect to the equivalent valkey-* commands.
+ .
+ This is a transitional package to help migrate from Redis to Valkey.
+
+Package: valkey-compat-redis-dev
+Source: valkey
+Version: 7.2.12-1.bullseye
+Architecture: all
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 77
+Depends: valkey-dev (>= 7.2.12-1.bullseye)
+Conflicts: redis-dev (<< 7.4~)
+Replaces: redis-dev (<< 7.4~)
+Provides: redis-dev
+Filename: ./valkey-compat-redis-dev_7.2.12-1.bullseye_all.deb
+Size: 17810
+MD5sum: 2c49061645b3a8adae8ab8fca688ea5e
+SHA1: ed614613b40831669fe46c67bb7bd4f2a9446b1c
+SHA256: 492989db807131e60f4aefcf7027998ad53f28e16276d98c7ac6466da39150e7
+Section: libdevel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://valkey.io
+Description: Redis API compatibility headers for Valkey modules
+ This package provides the legacy redismodule.h header for building
+ Valkey modules with the Redis API.
+ .
+ This is a transitional package to help migrate Redis modules to Valkey.
+
+Package: valkey-dev
+Source: valkey
+Version: 7.2.12-1.bullseye
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 132
+Filename: ./valkey-dev_7.2.12-1.bullseye_arm64.deb
+Size: 26718
+MD5sum: 32053cb7c6d15fab99e84cdedb6153b0
+SHA1: 792de8d6ded581adc63fb8df8a5bcdcad24484be
+SHA256: 6b24f6d83613a5c058443ae6120dc34a8ffea486b47ca91c4606744e0594c9cf
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://valkey.io
+Description: Development files for Valkey modules
+ Valkey is an advanced key-value store.
+ .
+ This package contains the header files needed to develop Valkey modules.
+ Includes valkeymodule.h and RPM macros for module packaging.
+
+Package: valkey-sentinel
+Source: valkey
+Version: 7.2.12-1.bullseye
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 65
+Depends: valkey-tools (= 7.2.12-1.bullseye), lsb-base (>= 3.2-14)
+Recommends: logrotate
+Filename: ./valkey-sentinel_7.2.12-1.bullseye_arm64.deb
+Size: 18770
+MD5sum: 57d4a62584380aa976f93ee7b0f1a96b
+SHA1: 9cc492abd270c63c75ed1364b083ad30687f056d
+SHA256: 4b2b7cfd9ab1c19fad87458f7228ac97d0f0d8ac6074c026e52f76665c67129a
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface (monitoring)
+ Valkey is an advanced key-value store.
+ .
+ This package contains the Valkey Sentinel monitoring software.
+
+Package: valkey-server
+Source: valkey
+Version: 7.2.12-1.bullseye
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 2791
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: valkey-tools (= 7.2.12-1.bullseye), lsb-base (>= 3.2-14), libatomic1 (>= 4.8), libc6 (>= 2.29), libjemalloc2 (>= 3.5.0), liblzf1 (>= 1.5), libssl1.1 (>= 1.1.1), libsystemd0
+Recommends: logrotate
+Suggests: valkey-compat-redis
+Provides: valkey
+Filename: ./valkey-server_7.2.12-1.bullseye_arm64.deb
+Size: 882402
+MD5sum: 0281dfc5f080b554d75aecf40d2e636d
+SHA1: 4844de20499eb340eb6307d936b886e44bc4166c
+SHA256: f2254cc65e409a1a96f72b228bd0d6f053358a666040bc8ef2b36b81f49ae8c0
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface
+ Valkey is an advanced key-value store. It is often referred to as a data
+ structure server since keys can contain strings, hashes, lists, sets and
+ sorted sets.
+ .
+ You can run atomic operations on these types, like appending to a string;
+ incrementing the value in a hash; pushing to a list; computing set
+ intersection, union and difference; or getting the member with highest
+ ranking in a sorted set.
+ .
+ In order to achieve its outstanding performance, Valkey works with an
+ in-memory dataset. Depending on your use case, you can persist it either
+ by dumping the dataset to disk every once in a while, or by appending
+ each command to a log.
+ .
+ Valkey also supports trivial-to-setup primary-replica replication, with very
+ fast non-blocking first synchronization, auto-reconnection on net split
+ and so forth.
+ .
+ Other features include Transactions, Pub/Sub, Lua scripting, Keys with a
+ limited time-to-live, and configuration settings to make Valkey behave like
+ a cache.
+
+Package: valkey-server-dbgsym
+Source: valkey
+Version: 7.2.12-1.bullseye
+Auto-Built-Package: debug-symbols
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 3278
+Depends: valkey-server (= 7.2.12-1.bullseye)
+Filename: ./valkey-server-dbgsym_7.2.12-1.bullseye_arm64.deb
+Size: 2957094
+MD5sum: 2d0d356592a6ec3dd885c0ff676dce56
+SHA1: 4660664a0d3997330e64364e97ebdbb149d80a45
+SHA256: 48b392f28d914046d37c266484918e992fc6d71fd4aad7f3ba9c6817a7ea8940
+Section: debug
+Priority: optional
+Description: debug symbols for valkey-server
+Build-Ids: 33cee0141602a78fea1e07624866bbc3ccd791f0
+
+Package: valkey-tools
+Source: valkey
+Version: 7.2.12-1.bullseye
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 1444
+Depends: adduser, libatomic1 (>= 4.8), libc6 (>= 2.29), libjemalloc2 (>= 2.1.1), liblzf1 (>= 1.5), libssl1.1 (>= 1.1.1), libsystemd0
+Suggests: ruby-redis
+Filename: ./valkey-tools_7.2.12-1.bullseye_arm64.deb
+Size: 246298
+MD5sum: e7a19663c19c1043794ccfa78b199be1
+SHA1: 21c787d9fa47b1f078c29e4c940296204d17afd8
+SHA256: a6a4eac0cea7120e6a22cf14ce54870f33b77b3db1ad8c2b825a74c8186cb0d5
+Section: database
+Priority: optional
+Homepage: https://valkey.io
+Description: Persistent key-value database with network interface (client)
+ Valkey is an advanced key-value store.
+ .
+ This package contains the command line client and other tools.
+
+Package: valkey-tools-dbgsym
+Source: valkey
+Version: 7.2.12-1.bullseye
+Auto-Built-Package: debug-symbols
+Architecture: arm64
+Maintainer: Evgeniy Patlan <evgeniy.patlan@percona.com>
+Installed-Size: 791
+Depends: valkey-tools (= 7.2.12-1.bullseye)
+Filename: ./valkey-tools-dbgsym_7.2.12-1.bullseye_arm64.deb
+Size: 674158
+MD5sum: e71d340623eb96217e8a4606b700cd96
+SHA1: 973e7c2fa867e62cd8fc34f428ed27f704d073a1
+SHA256: c9fc4b5302f1f60f5ef932d488a6f09801c74f6cc1cdd080a8ced1128f61efd2
+Section: debug
+Priority: optional
+Description: debug symbols for valkey-tools
+Build-Ids: 1b33cc31f513ed1fb4780166d1e3a7f49161ba09 9e6de89f21ab73578307e672cd1034e1814bd0af
+
