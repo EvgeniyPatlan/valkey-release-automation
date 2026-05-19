@@ -28,7 +28,15 @@ override_dh_auto_clean:
 	rm -rf valkey-doc-$(VALKEY_DOC_VERSION) valkey-doc-$(VALKEY_DOC_VERSION).tar.gz
 
 override_dh_auto_build:
-	dh_auto_build -- V=1 USE_SYSTEM_JEMALLOC=yes USE_SYSTEMD=yes USE_JEMALLOC=yes PREFIX=/usr@@EXTRA_BUILD_FLAGS@@
+	# Strip the build-time RPATH that upstream 9.1 bakes into all binaries
+	# via -Wl,-rpath,$(PREFIX)/lib:$(current_dir)/modules/lua in src/Makefile
+	# when BUILD_LUA=module. The first entry is redundant (libvalkeylua.so is
+	# in the default loader search path) and the second leaks the absolute
+	# build directory, which trips lintian binary-or-shlib-defines-rpath.
+	# Removing at source avoids needing chrpath/patchelf (matches the RPM
+	# spec %prep approach).
+	sed -i '/FINAL_LDFLAGS.*-Wl,-rpath/d' src/Makefile
+	dh_auto_build -- V=1 USE_SYSTEM_JEMALLOC=yes USE_SYSTEMD=yes USE_JEMALLOC=yes BUILD_LUA=module PREFIX=/usr@@EXTRA_BUILD_FLAGS@@
 
 # Build documentation if not nodoc profile
 ifeq (,$(filter nodoc,$(DEB_BUILD_PROFILES)))
