@@ -53,9 +53,8 @@ RPM_PLATFORMS=(
   "alma9|almalinux:9|rhel|epel-release"
   "alma10|almalinux:10|rhel|epel-release"
   "amzn2023|amazonlinux:2023|rhel|none"
-  "fedora39|fedora:39|rhel|none"
-  "fedora40|fedora:40|rhel|none"
-  "fedora41|fedora:41|rhel|none"
+  "fedora43|fedora:43|rhel|none"
+  "fedora44|fedora:44|rhel|none"
 )
 
 # ── Functions ────────────────────────────────────────────────────────────────

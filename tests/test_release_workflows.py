@@ -25,7 +25,7 @@ class ReleaseWorkflowCoverageTest(unittest.TestCase):
             "qualification-summary:",
             "Enforce the complete release matrix",
             '"$X86_COUNT" -ne 2',
-            '"$RPM_JOBS" -ne 30',
+            '"$RPM_JOBS" -ne 28',
         ):
             self.assertIn(contract, text)
 
