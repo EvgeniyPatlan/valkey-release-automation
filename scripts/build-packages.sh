@@ -32,7 +32,6 @@ FILTER_PLATFORM=""
 # ── Platform definitions ─────────────────────────────────────────────────────
 # DEB platforms: id|container|codename
 DEB_PLATFORMS=(
-  "debian11|debian:11|bullseye"
   "debian12|debian:12|bookworm"
   "debian13|debian:trixie|trixie"
   "ubuntu2204|ubuntu:22.04|jammy"
