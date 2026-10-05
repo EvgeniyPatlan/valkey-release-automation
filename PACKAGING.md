@@ -195,7 +195,7 @@ controller.
 request id. It builds the archive matrix and, for GA releases, every RPM/DEB
 package without receiving AWS or publishing credentials. Candidate execution
 runs in explicitly read-only jobs with checkout credentials disabled; separate
-publisher jobs alone can mint OIDC tokens. The expected 2 x86, 2 ARM, 30 RPM,
+publisher jobs alone can mint OIDC tokens. The expected 2 x86, 2 ARM, 28 RPM,
 and 10 DEB breadth is enforced exactly (RPM/DEB are intentionally skipped for
 RCs). Skipped GA package builds fail the summary job.
 
@@ -224,7 +224,7 @@ packages.yml
        │
        ├──► process-inputs ──► validate version, generate matrices
        │
-       ├──► build-rpm (15 platforms × 2 arches)
+       ├──► build-rpm (14 platforms × 2 arches)
        │       ├── merge common/ + N.M/ packaging
        │       ├── generate spec from template (8.1/9.0+)
        │       ├── build RPMs in Docker
@@ -976,7 +976,7 @@ Platforms are defined in [`.github/package-platforms.json`](.github/package-plat
 | Rocky Linux | 8, 9, 10 | x86_64, aarch64 |
 | AlmaLinux | 8, 9, 10 | x86_64, aarch64 |
 | Amazon Linux | 2023 | x86_64, aarch64 |
-| Fedora | 39, 40, 41 | x86_64, aarch64 |
+| Fedora | 43, 44 | x86_64, aarch64 |
 
 ### DEB Platforms
 
@@ -991,10 +991,10 @@ Platforms are defined in [`.github/package-platforms.json`](.github/package-plat
 ### Total Build Matrix
 
 ```
-RPM:  15 platforms × 2 architectures = 30 builds
+RPM:  14 platforms × 2 architectures = 28 builds
 DEB:   5 platforms × 2 architectures = 10 builds
                                        ─────────
-                              Total:   40 builds per version
+                              Total:   38 builds per version
 ```
 
 ---
@@ -1176,7 +1176,7 @@ All scripts live in the `scripts/` directory. The core build and publishing scri
 |----------|---------|-------------|
 | `VALKEY_VERSION` | `9.0.3` | Version to build |
 | `PLATFORM_FAMILY` | `suse` or `rhel` | Determines package manager and build flags |
-| `PLATFORM_ID` | `rocky9`, `fedora41` | Identifies the specific distro |
+| `PLATFORM_ID` | `rocky9`, `fedora44` | Identifies the specific distro |
 | `EPEL_PACKAGE` | `epel-release` or `none` | EPEL package to install (RHEL-based only) |
 | `EXPECTED_ARCH` | `x86_64` | Architecture for validation |
 
