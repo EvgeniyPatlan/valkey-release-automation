@@ -268,6 +268,7 @@ Input version    Packaging dir     Doc version    Notes
 8.1.6        →   packaging/8.1/    8.1.0          Templates with hiredis bundled dep
 9.0.3        →   packaging/9.0/    9.0.0          Templates with libvalkey bundled dep
 9.1.0        →   packaging/9.1/    9.1.0          Templates with libvalkey bundled dep (*)
+9.2.0        →   packaging/9.2/    9.2.0          Templates with libvalkey bundled dep, vendored lz4, zstd (*)
 10.0.1       →   packaging/10.0/   10.0.0         Templates with libvalkey bundled dep (*)
 ```
 
@@ -920,8 +921,29 @@ Patches differ across version branches because the source code differs:
 │ 8.1     │ Yes          │ Downloads valkey-doc-8.1.0.tar.gz   │
 ├─────────┼──────────────┼─────────────────────────────────────┤
 │ 9.0     │ Yes          │ Downloads valkey-doc-9.0.0.tar.gz   │
+├─────────┼──────────────┼─────────────────────────────────────┤
+│ 9.2     │ Fallback     │ No 9.2 valkey-doc tag yet: DEB falls│
+│         │              │ back to valkey-doc-9.1.0; RPM builds│
+│         │              │ with an empty doc tarball.          │
 └─────────┴──────────────┴─────────────────────────────────────┘
 ```
+
+### Zstandard (9.2+)
+
+Valkey 9.2 adds optional Zstandard streaming compression (`BUILD_ZSTD=yes`).
+Upstream links libzstd **statically** (it uses zstd's static-linking-only
+custom allocator API for memory accounting) and requires >= 1.4.7. The 9.2
+packaging enables it on every platform:
+
+| Platforms | zstd source |
+|-----------|-------------|
+| Debian 11/12/13, Ubuntu 22.04/24.04 | `libzstd-dev` (ships `libzstd.a`), found via pkg-config |
+| Fedora, Amazon Linux 2023 | `libzstd-static` |
+| openSUSE Leap 15.5/15.6 | `libzstd-devel-static` |
+| EL8/9/10 (Rocky, Alma, Oracle) | **Bundled**: none of BaseOS/AppStream, CRB/PowerTools or EPEL ships a static libzstd (and EL8's is 1.4.4). The spec's `Source60` pins an upstream zstd release (`zstd_version`, sha256-verified in `%prep`), builds `libzstd.a` with `-fPIC` and points `ZSTD_PREFIX` at it; the package declares `bundled(zstd)`. |
+
+To bump the bundled zstd, update `zstd_version` and `zstd_sha256` in
+`packaging/9.2/rpm/valkey.spec.template`.
 
 ### RPM Doc Build Behavior
 
