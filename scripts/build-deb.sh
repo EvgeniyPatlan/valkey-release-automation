@@ -48,6 +48,7 @@ apt-get install -y \
   libjemalloc-dev \
   libssl-dev \
   libsystemd-dev \
+  libzstd-dev \
   tcl \
   tcl-dev \
   python3
