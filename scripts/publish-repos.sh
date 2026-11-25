@@ -43,15 +43,21 @@ AVAILABLE_VERSIONS=""
 # which is the legitimate first-ever publication. A real API failure such as
 # AccessDenied also exits 1 with empty stdout, so stderr is what separates
 # them and both streams are checked here.
-LS_RC=0
 LS_ERR_FILE=$(mktemp)
 trap 'rm -f "$LS_ERR_FILE"' EXIT
-LS_OUT=$(aws s3 ls "s3://${S3_BUCKET}/packaging/" --region "$S3_REGION" 2>"$LS_ERR_FILE") || LS_RC=$?
-LS_ERR=$(cat "$LS_ERR_FILE")
-if [ "$LS_RC" -ne 0 ] && { [ "$LS_RC" -ne 1 ] || [ -n "$LS_OUT" ] || [ -n "$LS_ERR" ]; }; then
-  echo "ERROR: could not list existing package repositories (exit ${LS_RC}): ${LS_ERR:-no stderr}; refusing to publish a partial index." >&2
-  exit 1
-fi
+# Prints the listing of an S3 prefix: empty for a prefix that does not exist,
+# a failure for anything else.
+s3_ls() {
+  local out rc=0 err
+  out=$(aws s3 ls "$1" --region "$S3_REGION" 2>"$LS_ERR_FILE") || rc=$?
+  err=$(cat "$LS_ERR_FILE")
+  if [ "$rc" -ne 0 ] && { [ "$rc" -ne 1 ] || [ -n "$out" ] || [ -n "$err" ]; }; then
+    echo "ERROR: could not list $1 (exit ${rc}): ${err:-no stderr}; refusing to publish a partial index." >&2
+    return 1
+  fi
+  printf '%s\n' "$out"
+}
+LS_OUT=$(s3_ls "s3://${S3_BUCKET}/packaging/") || exit 1
 S3_DIRS=$(printf '%s\n' "$LS_OUT" | awk '/PRE valkey-/ {gsub(/PRE /,""); gsub(/\//,""); print}')
 
 for vdir in $S3_DIRS; do
@@ -80,7 +86,10 @@ APK_VERSIONS=""
 APK_KEY_FINGERPRINT=""
 if [ "$APK_ENABLED" = true ]; then
   for ver in ${AVAILABLE_VERSIONS//,/ }; do
-    if [ -n "$(aws s3 ls "s3://${S3_BUCKET}/packaging/valkey-${ver}/apk/" --region "$S3_REGION" 2>/dev/null || true)" ]; then
+    # Same rule as above: only a missing prefix means "no APK repository";
+    # any other error fails, so it cannot drop Alpine from the page.
+    APK_LS=$(s3_ls "s3://${S3_BUCKET}/packaging/valkey-${ver}/apk/") || exit 1
+    if [ -n "$APK_LS" ]; then
       APK_VERSIONS="${APK_VERSIONS:+${APK_VERSIONS},}${ver}"
     fi
   done
