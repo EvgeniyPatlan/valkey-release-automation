@@ -5,8 +5,9 @@
 #   /etc/init.d/valkey-sentinel          instance "default" -> /etc/valkey/sentinel-default.conf
 #   /etc/init.d/valkey-sentinel.<name>   instance "<name>"  -> /etc/valkey/sentinel-<name>.conf
 #
-# Sentinel rewrites its configuration file at runtime, so the file must be
-# writable by the valkey group (mode 0660, as installed).
+# Sentinel rewrites its configuration file at runtime, so the valkey user
+# must be able to replace it (valkey-owned 0640 from 9.2, 0660 group-writable
+# before).
 
 instance="${RC_SVCNAME#valkey-sentinel}"
 instance="${instance#.}"

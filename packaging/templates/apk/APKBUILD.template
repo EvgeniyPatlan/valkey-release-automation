@@ -134,7 +134,18 @@ package() {
 	install -Dm0640 -g valkey valkey.conf "$pkgdir"/etc/valkey/includes/valkey.defaults.conf
 	install -Dm0640 -g valkey sentinel.conf "$pkgdir"/etc/valkey/includes/sentinel.defaults.conf
 	install -Dm0640 -g valkey valkey.default.conf "$pkgdir"/etc/valkey/default.conf
-	install -Dm0660 -g valkey sentinel.default.conf "$pkgdir"/etc/valkey/sentinel-default.conf
+	# 9.2+ (as the 9.2 RPM): no sentinel.default.conf. Sentinel rewrites its
+	# whole config when it saves state, so it gets the patched sentinel.conf
+	# itself, owned by valkey, instead of a file that includes the defaults.
+	# Older lines keep the include file, group-writable.
+	case "$_srcver" in
+	7.* | 8.* | 9.0.* | 9.1.*)
+		install -Dm0660 -g valkey sentinel.default.conf "$pkgdir"/etc/valkey/sentinel-default.conf
+		;;
+	*)
+		install -Dm0640 -o valkey -g valkey sentinel.conf "$pkgdir"/etc/valkey/sentinel-default.conf
+		;;
+	esac
 
 	install -Dm0644 "$srcdir"/valkey.sysctl "$pkgdir"/etc/sysctl.d/00-valkey.conf
 	install -Dm0644 "$srcdir"/valkey.logrotate "$pkgdir"/etc/logrotate.d/valkey
